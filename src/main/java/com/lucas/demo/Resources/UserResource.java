@@ -1,7 +1,7 @@
-package Resources;
+package com.lucas.demo.Resources;
 
-import Entities.User;
-import Service.UserService;
+import com.lucas.demo.Entities.User;
+import com.lucas.demo.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
