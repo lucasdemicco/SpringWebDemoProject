@@ -1,5 +1,7 @@
 package com.lucas.demo.Entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -18,6 +20,7 @@ public class User implements Serializable {
     private String password;
     private String phone;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "client")
     private List<Orders> orders = new ArrayList<>();
 
