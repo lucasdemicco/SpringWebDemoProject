@@ -1,5 +1,6 @@
 package com.lucas.demo.Config;
 
+import com.lucas.demo.Entities.OrderStatus;
 import com.lucas.demo.Entities.Orders;
 import com.lucas.demo.Entities.User;
 import com.lucas.demo.Repositories.OrdersRepository;
@@ -24,13 +25,13 @@ public class TestConfig implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        User usuario1 = new User(null, "Maria Brown", "maria@gmail.com", "1234", "99999");
-        User usuario2 = new User(null ,"Alex Green", "alex@gmail.com", "123456", "99999");
+        User u1 = new User(null, "Maria Brown", "maria@gmail.com", "1234", "99999");
+        User u2 = new User(null ,"Alex Green", "alex@gmail.com", "123456", "99999");
 
-        Orders o1 = new Orders(null, Instant.parse("2019-06-20T19:53:07Z"), usuario1);
-        Orders o2 = new Orders(null, Instant.parse("2019-07-21T03:42:10Z"), usuario2);
+        Orders o1 = new Orders(null, Instant.parse("2019-06-20T19:53:07Z"), u1, OrderStatus.PAID);
+        Orders o2 = new Orders(null, Instant.parse("2019-07-21T03:42:10Z"), u2, OrderStatus.WAITING_PAYMENT);
 
-        userRepository.saveAll(Arrays.asList(usuario1, usuario2));
+        userRepository.saveAll(Arrays.asList(u1, u2));
         ordersRepository.saveAll(Arrays.asList(o1, o2));
     }
 }

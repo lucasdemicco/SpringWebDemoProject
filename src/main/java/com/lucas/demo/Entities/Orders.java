@@ -22,13 +22,16 @@ public class Orders implements Serializable {
     @JoinColumn(name = "client_id")
     private User client;
 
+    private Integer orderStatus;
+
     public Orders() {
     }
 
-    public Orders(Long id, Instant moment, User client) {
+    public Orders(Long id, Instant moment, User client, OrderStatus orderStatus) {
         this.id = id;
         this.moment = moment;
         this.client = client;
+        setOrderStatus(orderStatus);
     }
 
     public Long getId() {
@@ -53,6 +56,16 @@ public class Orders implements Serializable {
 
     public void setClient(User client) {
         this.client = client;
+    }
+
+    public OrderStatus getOrderStatus() {
+        return OrderStatus.valueOf(orderStatus);
+    }
+
+    public void setOrderStatus(OrderStatus orderStatus) {
+        if (orderStatus != null) {
+            this.orderStatus = orderStatus.getCode();
+        }
     }
 
     @Override
