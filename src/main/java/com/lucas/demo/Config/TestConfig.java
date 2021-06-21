@@ -1,8 +1,10 @@
 package com.lucas.demo.Config;
 
+import com.lucas.demo.Entities.Category;
 import com.lucas.demo.Entities.OrderStatus;
 import com.lucas.demo.Entities.Orders;
 import com.lucas.demo.Entities.User;
+import com.lucas.demo.Repositories.CategoryRepository;
 import com.lucas.demo.Repositories.OrdersRepository;
 import com.lucas.demo.Repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,8 +25,18 @@ public class TestConfig implements CommandLineRunner {
     @Autowired
     private OrdersRepository ordersRepository;
 
+    @Autowired
+    private CategoryRepository categoryRepository;
+
     @Override
     public void run(String... args) throws Exception {
+
+        Category cat1 = new Category(null, "Electronics");
+        Category cat2 = new Category(null, "Books");
+        Category cat3 = new Category(null, "Computers");
+
+        categoryRepository.saveAll(Arrays.asList(cat1, cat2, cat3));
+
         User u1 = new User(null, "Maria Brown", "maria@gmail.com", "1234", "99999");
         User u2 = new User(null ,"Alex Green", "alex@gmail.com", "123456", "99999");
 
